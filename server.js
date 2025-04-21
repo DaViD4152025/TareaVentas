@@ -1,10 +1,17 @@
 // server.js
 //importamos las dependencias
 const express = require("express") //para el manejo de solicitudes http
+<<<<<<< HEAD
 const cors = require("cors") //habilita los cors en la aplicacion para la comunicacion
 const productRoutes = require("./routers/productRouters") // Rutas de productos
 const clienteRoutes = require("./routers/clienteRouters") // Rutas de clientes
 const { handleRouteNotFound, errorMiddleware } = require("./utils/errorHandler")
+=======
+
+const cors = require("cors") //habilita los cors en la aplicacion para la comunicacion
+const productRoutes = require("./routers/productRouters") // Rutas de productos
+const clienteRoutes = require("./routers/clienteRouters") // Rutas de clientes
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
 
 class Server {
   //clase para encapsular la configuracion y el arranque del servidor
@@ -51,11 +58,35 @@ class Server {
   }
 
   handleErrors() {
+<<<<<<< HEAD
     // Middleware para manejar rutas no encontradas - usando nuestro nuevo manejador
     this.app.use((req, res) => handleRouteNotFound(req, res))
 
     // Middleware para manejar errores - usando nuestro nuevo middleware
     this.app.use(errorMiddleware)
+=======
+    // Middleware para manejar rutas no encontradas
+    this.app.use((req, res, next) => {
+      res.status(404).json({
+        mensaje: `Ruta no encontrada: ${req.method} ${req.url}`,
+        sugerencias: {
+          api_info: "GET /",
+          test: "GET /test",
+          productos: "GET /productos",
+          clientes: "GET /clientes",
+        },
+      })
+    })
+
+    // Middleware para manejar errores
+    this.app.use((err, req, res, next) => {
+      console.error(err.stack)
+      res.status(500).json({
+        mensaje: "Error interno del servidor",
+        error: process.env.NODE_ENV === "production" ? "Detalles ocultos en producción" : err.message,
+      })
+    })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
   }
 
   start() {

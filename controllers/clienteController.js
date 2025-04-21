@@ -1,6 +1,9 @@
 // controllers/clienteController.js
 const clienteService = require("../services/clienteService")
+<<<<<<< HEAD
 const { handleError } = require("../utils/errorHandler")
+=======
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
 
 class ClienteController {
   // Obtener todos los clientes
@@ -10,7 +13,11 @@ class ClienteController {
       res.json(clientes)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "GET_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al obtener clientes" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -20,12 +27,20 @@ class ClienteController {
     try {
       const cliente = await clienteService.getClienteById(id)
       if (!cliente) {
+<<<<<<< HEAD
         return handleError(res, { category: "CLIENTE", type: "NOT_FOUND" })
+=======
+        return res.status(404).json({ mensaje: "Cliente no encontrado" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
       }
       res.json(cliente)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "GET_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al obtener cliente" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -35,12 +50,20 @@ class ClienteController {
     try {
       const cliente = await clienteService.getClienteByDni(dni)
       if (!cliente) {
+<<<<<<< HEAD
         return handleError(res, { category: "CLIENTE", type: "NOT_FOUND" })
+=======
+        return res.status(404).json({ mensaje: "Cliente no encontrado" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
       }
       res.json(cliente)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "GET_BY_DNI_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al obtener cliente por DNI" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -58,7 +81,11 @@ class ClienteController {
       res.status(201).json(newCliente)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "CREATE_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al crear cliente" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -75,12 +102,20 @@ class ClienteController {
         fecha_nacimiento,
       })
       if (!updatedCliente) {
+<<<<<<< HEAD
         return handleError(res, { category: "CLIENTE", type: "NOT_FOUND" })
+=======
+        return res.status(404).json({ mensaje: "Cliente no encontrado" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
       }
       res.json(updatedCliente)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "UPDATE_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al actualizar cliente" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -96,12 +131,20 @@ class ClienteController {
         fecha_nacimiento,
       })
       if (!updatedCliente) {
+<<<<<<< HEAD
         return handleError(res, { category: "CLIENTE", type: "NOT_FOUND" })
+=======
+        return res.status(404).json({ mensaje: "Cliente no encontrado" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
       }
       res.json(updatedCliente)
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "UPDATE_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al actualizar cliente por DNI" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -113,7 +156,11 @@ class ClienteController {
       res.status(204).send() // No content
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "DELETE_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al eliminar cliente" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 
@@ -125,7 +172,11 @@ class ClienteController {
       res.status(204).send() // No content
     } catch (error) {
       console.error(error)
+<<<<<<< HEAD
       handleError(res, { category: "CLIENTE", type: "DELETE_ERROR" }, error)
+=======
+      res.status(500).json({ mensaje: "Error al eliminar cliente por DNI" })
+>>>>>>> 563ce3bd7175d67041463a16cd60411bbce6799a
     }
   }
 }
